@@ -1,0 +1,13 @@
+branches:
+  only:
+    - master
+
+init:
+  - git config --global core.autocrlf input
+
+clone_depth: 1
+
+build_script:
+  - $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
+  - $env:MSYSTEM = 'MINGW64'  # Start a 64 bit Mingw environment
+  - C:\msys64\user\bin\bash -lc "./ci-build.sh"
